@@ -234,51 +234,6 @@ namespace AudioLighting.Models
             }
         }
 
-        public static void SetDefaultTheme()
-        {
-            var appStyle = ThemeManager.DetectAppStyle(Application.Current);
-            ThemeManager.ChangeAppStyle(Application.Current,
-                                        ThemeManager.GetAccent("Blue"),
-                                            ThemeManager.GetAppTheme("BaseDark")); // or appStyle.Item1
-
-            //var x = ThemeManager.GetAccent("Blue");
-            var g = new LinearGradientBrush
-            {
-                //g.StartPoint = new Point(0.5, 0);
-                //g.EndPoint = new Point(0.5, 1);
-                StartPoint = new Point(1, 1),
-                EndPoint = new Point(0, 0)
-            };
-            g.GradientStops.Add(new GradientStop(Colors.Red, 0.0));
-            g.GradientStops.Add(new GradientStop(Colors.Orange, 0.17));
-            g.GradientStops.Add(new GradientStop(Colors.Yellow, 0.33));
-            g.GradientStops.Add(new GradientStop(Colors.Green, 0.5));
-            g.GradientStops.Add(new GradientStop(Colors.Blue, 0.67));
-            g.GradientStops.Add(new GradientStop(Colors.Indigo, 0.83));
-            g.GradientStops.Add(new GradientStop(Colors.Violet, 1.0));
-            var x = new ResourceDictionary
-            {
-                { "RainbowBorderBrush", g }
-            };
-            ThemeManager.AddAccent("RainbowBorderBrush", x);
-            Application.Current.Resources.Add("RainbowBorderBrush", g);
-        }
-
-        public static void SetTheme(string accent, string appTheme)
-        {
-            try
-            {
-                var appStyle = ThemeManager.DetectAppStyle(Application.Current);
-                ThemeManager.ChangeAppStyle(Application.Current,
-                                            ThemeManager.GetAccent(accent),
-                                                ThemeManager.GetAppTheme(appTheme)); // or appStyle.Item1
-            }
-            catch
-            {
-                SetDefaultTheme();
-            }
-        }
-
         public static void SwitchDeviceFromString(string s)
         {
             var success = int.TryParse(s.Split(' ')[0], out var d);

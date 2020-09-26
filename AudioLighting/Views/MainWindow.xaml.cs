@@ -20,8 +20,7 @@ namespace AudioLighting.Views
 
         public MainWindow()
         {
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(MyUtils.OnProcessExit);
-            MyUtils.SetDefaultTheme();
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(MyUtils.OnProcessExit);    
 
             InitializeComponent();
             InitDevices();
