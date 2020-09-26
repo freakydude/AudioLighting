@@ -48,8 +48,8 @@ namespace AudioLighting.Views
             lblDetails.Content = Details;
             grpDevice.Header = DeviceName;
             spcDev.Smoothing = Smoothing;
-            ckbSmoothing.IsChecked = DeviceItem.Smooth;
-            if (!(bool)ckbSmoothing.IsChecked)
+            ckbSmoothing.IsOn = DeviceItem.Smooth;
+            if (!(bool)ckbSmoothing.IsOn)
             {
                 spcDev.Smoothing = 0;
             }
@@ -154,7 +154,7 @@ namespace AudioLighting.Views
 
         private void CkbEnable_Changed(object sender, RoutedEventArgs e)
         {
-            if (ckbEnable.IsChecked == true)
+            if (ckbEnable.IsOn == true)
             {
                 DeviceItem.Start();
                 spcDev.enable();
@@ -168,7 +168,7 @@ namespace AudioLighting.Views
 
         private void CkbSmoothing_Changed(object sender, RoutedEventArgs e)
         {
-            if (ckbSmoothing.IsChecked == true)
+            if (ckbSmoothing.IsOn == true)
             {
                 DeviceItem.Smooth = true;
                 spcDev.Smoothing = DeviceItem.Smoothing;
@@ -196,7 +196,7 @@ namespace AudioLighting.Views
                 u.Stop();
             }
 
-            ckbEnable.IsChecked = false;
+            ckbEnable.IsOn = false;
             Window w = new EditDevice(DeviceItem.DeepCopy(), mwInstance);
 
             w.Show();
@@ -212,12 +212,12 @@ namespace AudioLighting.Views
                 DeviceItem.setPatternAsync(num);
                 if (m.Name == "MenuVisualizers")
                 {
-                    ckbEnable.IsChecked = true;
+                    ckbEnable.IsOn = true;
                     tbtnPower.IsChecked = true;
                 }
                 else
                 {
-                    ckbEnable.IsChecked = false;
+                    ckbEnable.IsOn = false;
                     tbtnPower.IsChecked = true;
                 }
             }

@@ -11,7 +11,7 @@
              d:DesignHeight="360" d:DesignWidth="360">
     <Grid>
         <!--BorderBrush="{StaticResource ResourceKey=RainbowBorderBrush}"-->
-        <GroupBox  x:Name="grpDevice" Header="{Binding DeviceName, ElementName=DeviceControlItem}" Height="360" Width="360" Margin="0,0,0,0" VerticalAlignment="Top" mah:ControlsHelper.HeaderFontSize="14" mah:ControlsHelper.ContentCharacterCasing="Normal">
+        <GroupBox  x:Name="grpDevice" Header="{Binding DeviceName, ElementName=DeviceControlItem}" Height="360" Width="360" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="14" mah:ControlsHelper.ContentCharacterCasing="Normal">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="95*"/>
@@ -43,13 +43,13 @@
                 <Label Grid.Column="0" x:Name="lblText" Content="Brightness:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14"/>
                 <Label Grid.Column="1" x:Name="lblBrit" Content="50%" HorizontalAlignment="Right" Margin="0,44,10,0" VerticalAlignment="Top" FontSize="14"/>
                 <!--<CheckBox x:Name="ckbEnable" Content="Stream Data" HorizontalAlignment="Left" Margin="15,78,0,0" VerticalAlignment="Top" Checked="CkbEnable_Changed" Unchecked="CkbEnable_Changed"/>-->
-                <mah:ToggleSwitch Grid.Column="0" Name="ckbEnable" Header="Stream Data" OnLabel="On" OffLabel="Off" Margin="10,78,10,212" Checked="CkbEnable_Changed" Unchecked="CkbEnable_Changed" FontSize="14" Foreground="White" mah:ControlsHelper.HeaderFontSize="12" ContentPadding="0,0,4,0" mah:ControlsHelper.HeaderMargin="0,0,0,-8" Grid.RowSpan="2"/>
+                <mah:ToggleSwitch Grid.Column="0" Name="ckbEnable" Header="Stream Data" OnContent="On" OffContent="Off" Margin="10,78,10,212" Toggled="CkbEnable_Changed" FontSize="14" Foreground="White"  ContentPadding="0,0,4,0" Grid.RowSpan="2"/>
 
 
 
                 <mah:DropDownButton  Grid.Column="1" Name="ddbSettings" VerticalContentAlignment="Center" Content="Settings" Icon="{iconPacks:FontAwesome Kind=CogsSolid}" Margin="0,78,10,212" Foreground="White" Grid.RowSpan="2" >
                     <mah:DropDownButton.Items>
-                        <mah:ToggleSwitch Grid.Column="1" Name="ckbSmoothing" Header="Smooth Speectrum" OnLabel="On" OffLabel="Off" Checked="CkbSmoothing_Changed" Unchecked="CkbSmoothing_Changed" FontSize="14" Foreground="White" mah:ControlsHelper.HeaderFontSize="11" ContentPadding="0,0,4,0" mah:ControlsHelper.HeaderMargin="0,0,0,-8"/>
+                        <mah:ToggleSwitch Grid.Column="1" Name="ckbSmoothing" Header="Smooth Speectrum" OnContent="On" OffContent="Off" Toggled="CkbSmoothing_Changed"  FontSize="11" Foreground="White"  ContentPadding="0,0,4,0" />
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="15*" />
