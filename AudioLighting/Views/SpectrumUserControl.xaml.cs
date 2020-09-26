@@ -9,12 +9,12 @@ namespace AudioLighting.Views
     /// <summary>
     /// Interaktionslogik für Spectrum.xaml
     /// </summary>
-    public partial class Spectrum : UserControl
+    public partial class SpectrumUserControl : UserControl
     {
         public WpfUserControlDevice wucd;
         public List<ProgressBar> bars;
 
-        public Spectrum()
+        public SpectrumUserControl()
         {
             InitializeComponent();
         }
@@ -55,19 +55,19 @@ namespace AudioLighting.Views
 
         // Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SpecProperty =
-            DependencyProperty.Register("SpecName", typeof(string), typeof(Spectrum), new PropertyMetadata("placeholder"));
+            DependencyProperty.Register("SpecName", typeof(string), typeof(SpectrumUserControl), new PropertyMetadata("placeholder"));
 
 
 
         // Using a DependencyProperty as the backing store for Smoothing.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SmoothingProperty =
-            DependencyProperty.Register("Smoothing", typeof(int), typeof(Spectrum), new FrameworkPropertyMetadata(0,
+            DependencyProperty.Register("Smoothing", typeof(int), typeof(SpectrumUserControl), new FrameworkPropertyMetadata(0,
                  FrameworkPropertyMetadataOptions.AffectsRender,
                    new PropertyChangedCallback(OnSmoothingChanged)));
 
         private static void OnSmoothingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var xyz = d as Spectrum;
+            var xyz = d as SpectrumUserControl;
             var runnin = false; if (xyz.wucd != null && xyz.wucd.Ready())
             {
                 runnin = true;
@@ -95,13 +95,13 @@ namespace AudioLighting.Views
 
         // Using a DependencyProperty as the backing store for Lines.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LinesProperty =
-            DependencyProperty.Register("Lines", typeof(int), typeof(Spectrum), new FrameworkPropertyMetadata(10,
+            DependencyProperty.Register("Lines", typeof(int), typeof(SpectrumUserControl), new FrameworkPropertyMetadata(10,
                  FrameworkPropertyMetadataOptions.AffectsRender,
                    new PropertyChangedCallback(OnLineCountSet)));
 
         private static void OnObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var xyz = d as Spectrum;
+            var xyz = d as SpectrumUserControl;
             //xyz.SpectrumVisualizer.Height = xyz.BarHeight;
             //xyz.MainGrid.Height = xyz.BarHeight;
             //xyz.SpectrumVisualizer.Width = xyz.TotalWidth;
@@ -130,7 +130,7 @@ namespace AudioLighting.Views
 
         private static void OnLineCountSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var xyz = d as Spectrum;
+            var xyz = d as SpectrumUserControl;
             var runnin = false; if (xyz.wucd != null && xyz.wucd.Ready())
             {
                 runnin = true;
@@ -158,7 +158,7 @@ namespace AudioLighting.Views
 
         // Using a DependencyProperty as the backing store for Height.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BarHeightProperty =
-            DependencyProperty.Register("BarHeight", typeof(int), typeof(Spectrum), new FrameworkPropertyMetadata(20,
+            DependencyProperty.Register("BarHeight", typeof(int), typeof(SpectrumUserControl), new FrameworkPropertyMetadata(20,
                  FrameworkPropertyMetadataOptions.AffectsRender,
                    new PropertyChangedCallback(OnObjectChanged)));
 
@@ -172,7 +172,7 @@ namespace AudioLighting.Views
 
         // Using a DependencyProperty as the backing store for Totalwidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TotalWidthProperty =
-            DependencyProperty.Register("TotalWidth", typeof(int), typeof(Spectrum), new FrameworkPropertyMetadata(300,
+            DependencyProperty.Register("TotalWidth", typeof(int), typeof(SpectrumUserControl), new FrameworkPropertyMetadata(300,
                  FrameworkPropertyMetadataOptions.AffectsRender,
                    new PropertyChangedCallback(OnObjectChanged)));
 

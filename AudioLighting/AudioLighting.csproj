@@ -262,33 +262,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Converter.cs" />
+    <Compile Include="Models\NetworkDevice.cs" />
+    <Compile Include="Models\SaveObject.cs" />
+    <Compile Include="Models\SerialComDevice.cs" />
+    <Compile Include="Models\UdpDevice.cs" />
+    <Compile Include="Models\Value.cs" />
+    <Compile Include="Models\ValueConverter.cs" />
+    <Compile Include="Models\WebserverResponse.cs" />
+    <Compile Include="Models\WpfDisplay.cs" />
+    <Compile Include="ViewModels\Contract\IMainViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Commands\AsyncCommand.cs" />
     <Compile Include="ViewModels\Commands\IAsyncCommand.cs" />
     <Compile Include="ViewModels\Common\BindableBase.cs" />
     <Compile Include="ViewModels\Common\ViewModelLocator.cs" />
     <Compile Include="ViewModels\Contract\IBindableBase.cs" />
     <Compile Include="ViewModels\Contract\INavigatorAwareViewModelBase.cs" />
-    <Compile Include="ViewModels\NewDeviceViewModel.cs" />
-    <Compile Include="Views\DeviceControl.xaml.cs">
-      <DependentUpon>DeviceControl.xaml</DependentUpon>
+    <Compile Include="Views\DeviceUserControl.xaml.cs">
+      <DependentUpon>DeviceUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditDevice.xaml.cs">
-      <DependentUpon>EditDevice.xaml</DependentUpon>
+    <Compile Include="Views\EditDeviceWindow.xaml.cs">
+      <DependentUpon>EditDeviceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Networkscanner.xaml.cs">
-      <DependentUpon>Networkscanner.xaml</DependentUpon>
+    <Compile Include="Views\NetworkScannerWindow.xaml.cs">
+      <DependentUpon>NetworkScannerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="Views\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Spectrum.xaml.cs">
-      <DependentUpon>Spectrum.xaml</DependentUpon>
+    <Compile Include="Views\SpectrumUserControl.xaml.cs">
+      <DependentUpon>SpectrumUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WpfVisualizer.xaml.cs">
-      <DependentUpon>WpfVisualizer.xaml</DependentUpon>
+    <Compile Include="Views\VisualizerWindow.xaml.cs">
+      <DependentUpon>VisualizerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -302,11 +312,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\DeviceControl.xaml">
+    <Page Include="Views\DeviceUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\EditDevice.xaml">
+    <Page Include="Views\EditDeviceWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -314,26 +324,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Networkscanner.xaml">
+    <Page Include="Views\NetworkScannerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Settings.xaml">
+    <Page Include="Views\SettingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Spectrum.xaml">
+    <Page Include="Views\SpectrumUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\WpfVisualizer.xaml">
+    <Page Include="Views\VisualizerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AudioProcessor.cs" />
-    <Compile Include="Models\Communication.cs" />
+    <Compile Include="Models\WpfUserControlDevice.cs" />
     <Compile Include="Models\ICommunicate.cs" />
     <Compile Include="Models\MyUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -13,14 +13,14 @@ using System.Windows.Threading;
 
 namespace AudioLighting.Views
 {
-    public partial class Networkscanner : MetroWindow
+    public partial class NetworkScannerWindow : MetroWindow
     {
         private DispatcherTimer timer;
         private int ScanCount;
         private int btnState = 0;
         private readonly List<ManualResetEvent> doneEvents = new List<ManualResetEvent>();
 
-        public Networkscanner()
+        public NetworkScannerWindow()
         {
             InitializeComponent();
             dgDevices.ItemsSource = MyUtils.NetworkDevices;
@@ -164,9 +164,9 @@ namespace AudioLighting.Views
                 });
             }
         }
-        public List<MyUtils.NetworkDevice> FindDevs(string ipFrom, string ipTo, DataGrid dg, Button btn) // 
+        public List<NetworkDevice> FindDevs(string ipFrom, string ipTo, DataGrid dg, Button btn) 
         {
-            var dev = new List<MyUtils.NetworkDevice>();
+            var dev = new List<NetworkDevice>();
 
 
             var lastF = ipFrom.LastIndexOf(".");
@@ -186,7 +186,7 @@ namespace AudioLighting.Views
                     System.Diagnostics.Debug.WriteLine(ipTo.Substring(0, lastT + 1) + i);
 
                     doneEvents.Add(new ManualResetEvent(false));
-                    var nd = new MyUtils.NetworkDevice(address + i, doneEvents[doneEvents.Count - 1]);
+                    var nd = new NetworkDevice(address + i, doneEvents[doneEvents.Count - 1]);
 
                     ThreadPool.QueueUserWorkItem(nd.ThreadPoolCallback);
 
@@ -207,7 +207,7 @@ namespace AudioLighting.Views
 
         public static int RemoveEmptyDevices(bool removeUnscanned = false)
         {
-            var toRemove = new List<MyUtils.NetworkDevice>();
+            var toRemove = new List<NetworkDevice>();
 
             foreach (var n in MyUtils.NetworkDevices)
             {

@@ -128,7 +128,7 @@ namespace AudioLighting.Views
         {
             spcSource.wucd.Stop();
             spcSource.wucd.Start();
-            foreach (var y in MyUtils.FindVisualChildren<Spectrum>(Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)))
+            foreach (var y in MyUtils.FindVisualChildren<SpectrumUserControl>(Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive)))
             {
                 y.wucd.Stop();
                 y.wucd.Start();
@@ -143,7 +143,7 @@ namespace AudioLighting.Views
 
         public void RefreshDevicesBox()
         {
-            foreach (var y in MyUtils.FindVisualChildren<DeviceControl>(grpDevices))
+            foreach (var y in MyUtils.FindVisualChildren<DeviceUserControl>(grpDevices))
             {
                 y.RefAll();
             }
@@ -397,7 +397,7 @@ namespace AudioLighting.Views
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
 #if DEBUG
-            Window s = new Settings();
+            Window s = new SettingsWindow();
             s.Show();
 #else
             MessageBox.Show("Work in progress...");
@@ -406,7 +406,7 @@ namespace AudioLighting.Views
 
         private void BtnNetworkscanner_Click(object sender, RoutedEventArgs e)
         {
-            Window scan = new Networkscanner();
+            Window scan = new NetworkScannerWindow();
             scan.Show();
         }
 

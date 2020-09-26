@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Extensions.DependencyInjection;
+
 namespace AudioLighting.ViewModels.Common
 {
     /// <summary>
@@ -6,6 +8,12 @@ namespace AudioLighting.ViewModels.Common
     /// </summary>
     public class ViewModelLocator
     {
-
+        public IMainViewModel MainViewModel
+        {
+            get
+            { 
+                return App.ServiceProvider.GetRequiredService<IMainViewModel>(); 
+            }
+        }
     }
 }

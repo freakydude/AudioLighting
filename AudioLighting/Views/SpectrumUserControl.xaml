@@ -1,11 +1,10 @@
-﻿<UserControl x:Class="AudioLighting.Views.Spectrum"
+﻿<UserControl x:Class="AudioLighting.Views.SpectrumUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Name="SpectrumVisualizer" Height="{Binding BarHeight, ElementName=SpectrumVisualizer}" Width="{Binding TotalWidth, ElementName=SpectrumVisualizer}"
-             >
+             Name="SpectrumVisualizer" Height="{Binding BarHeight, ElementName=SpectrumVisualizer}" Width="{Binding TotalWidth, ElementName=SpectrumVisualizer}" >
     <Grid Name="MainGrid" ><!--
         <Rectangle>
             <Rectangle.Stroke>

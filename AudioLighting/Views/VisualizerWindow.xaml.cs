@@ -5,9 +5,9 @@ namespace AudioLighting.Views
     /// <summary>
     /// Interaktionslogik für WpfVisualizer.xaml
     /// </summary>
-    public partial class WpfVisualizer : Window
+    public partial class VisualizerWindow : Window
     {
-        public WpfVisualizer(double scale)
+        public VisualizerWindow(double scale)
         {
             InitializeComponent();
             sldScale.Value = scale;

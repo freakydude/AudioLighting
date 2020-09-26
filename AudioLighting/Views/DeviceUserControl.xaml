@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="AudioLighting.Views.DeviceControl"
+﻿<UserControl x:Class="AudioLighting.Views.DeviceUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -28,8 +28,7 @@
                         <ColumnDefinition Width="8*" />
                     </Grid.ColumnDefinitions>
                     <Label  Grid.Column="0" x:Name="lblDetails" Content="{Binding Details, ElementName=DeviceControlItem}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="155" Panel.ZIndex="1"/>
-                    <ToggleButton Name="tbtnPower" Margin="0,5,10,0" Height="40" Width="40" 
-              Style="{DynamicResource MetroCircleToggleButtonStyle}" Grid.Column="1" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <ToggleButton Name="tbtnPower" Margin="0,5,10,0" Height="40" Width="40" Style="{DynamicResource MahApps.Styles.Button.Circle}" Grid.Column="1" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Checked" HorizontalAlignment="Right" VerticalAlignment="Top">
                         <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}">
                             <Rectangle.OpacityMask>
                                 <VisualBrush Stretch="Fill" Visual="{iconPacks:FontAwesome Kind=PowerOffSolid}"/>
@@ -96,7 +95,7 @@
                     </mah:DropDownButton>
                 </Grid>
 
-                <local:Spectrum x:Name="spcDev" Grid.ColumnSpan="2" BarHeight="85" TotalWidth="330" Width="330" Margin="10,0,10,66" Lines="{Binding BandCount}" SpecName="{Binding DeviceName}" Smoothing="{Binding Smoothing}" Height="85" VerticalAlignment="Bottom" Grid.Row="1"/>
+                <local:SpectrumUserControl x:Name="spcDev" Grid.ColumnSpan="2" BarHeight="85" TotalWidth="330" Width="330" Margin="10,0,10,66" Lines="{Binding BandCount}" SpecName="{Binding DeviceName}" Smoothing="{Binding Smoothing}" Height="85" VerticalAlignment="Bottom" Grid.Row="1"/>
             </Grid>
         </GroupBox>
     </Grid>

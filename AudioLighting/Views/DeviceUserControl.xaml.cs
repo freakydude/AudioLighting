@@ -9,9 +9,9 @@ namespace AudioLighting.Views
     /// <summary>
     /// Interaktionslogik für DeviceControl.xaml
     /// </summary>
-    public partial class DeviceControl : UserControl
+    public partial class DeviceUserControl : UserControl
     {
-        public DeviceControl()
+        public DeviceUserControl()
         {
             InitializeComponent();
             RefAll();
@@ -24,7 +24,7 @@ namespace AudioLighting.Views
         }
 
         public static readonly DependencyProperty MyDeviceProperty =
-            DependencyProperty.Register("MyDevice", typeof(object), typeof(DeviceControl), new FrameworkPropertyMetadata(new UdpDevice("Meta", "192.168.0.210", 4120, 32, 2),
+            DependencyProperty.Register("MyDevice", typeof(object), typeof(DeviceUserControl), new FrameworkPropertyMetadata(new UdpDevice("Meta", "192.168.0.210", 4120, 32, 2),
                  FrameworkPropertyMetadataOptions.AffectsRender,
                    new PropertyChangedCallback(OnObjectChanged)));
 
@@ -34,7 +34,7 @@ namespace AudioLighting.Views
 
         private static void OnObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var devC = d as DeviceControl;
+            var devC = d as DeviceUserControl;
             devC.RefAll();
         }
 
@@ -197,7 +197,7 @@ namespace AudioLighting.Views
             }
 
             ckbEnable.IsOn = false;
-            Window w = new EditDevice(DeviceItem.DeepCopy(), mwInstance);
+            Window w = new EditDeviceWindow(DeviceItem.DeepCopy(), mwInstance);
 
             w.Show();
         }

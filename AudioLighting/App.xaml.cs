@@ -1,6 +1,11 @@
 ﻿using AudioLighting.Views;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 
 namespace AudioLighting
@@ -12,6 +17,23 @@ namespace AudioLighting
     {
         //private System.Windows.Forms.NotifyIcon notifyIcon;
         private bool isExit;
+        private readonly IHost host;
+
+        public App()
+        {
+            InitializeComponent();
+
+            host = Host.CreateDefaultBuilder()
+                .ConfigureHostConfiguration(ConfigureHost)
+                .ConfigureLogging(ConfigureLogging)
+                .ConfigureServices(ConfigureServices)
+                //.ConfigureAppConfiguration(ConfigureApp)
+                .Build();
+
+            ServiceProvider = host.Services;
+        }
+
+        public static IServiceProvider ServiceProvider { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -60,25 +82,6 @@ namespace AudioLighting
         {
             isExit = true;
             MainWindow.Close();
-            //notifyIcon.Visible = false;
-            //notifyIcon.Dispose();
-            //notifyIcon = null;
-        }
-
-        private void ShowMainWindow()
-        {
-            if (MainWindow.IsVisible)
-            {
-                if (MainWindow.WindowState == WindowState.Minimized)
-                {
-                    MainWindow.WindowState = WindowState.Normal;
-                }
-                MainWindow.Activate();
-            }
-            else
-            {
-                MainWindow.Show();
-            }
         }
 
         private void AudioSwitching(object sender, EventArgs e)
@@ -94,6 +97,44 @@ namespace AudioLighting
                 e.Cancel = true;
                 MainWindow.Hide(); // A hidden window can be shown again, a closed one not
             }
+        }
+
+        private void ConfigureHost(IConfigurationBuilder builder)
+        {
+            builder.SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", true, true);
+        }
+
+        private void ConfigureLogging(HostBuilderContext context, ILoggingBuilder loggingBuilder)
+        {
+            var configuration = context.Configuration;
+            var loggingSection = configuration.GetSection("Logging");
+
+            try
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+
+                var logFile = loggingSection.GetSection("File:Path").Value;
+                if (!string.IsNullOrWhiteSpace(logFile))
+                {
+                    var logFileExpanded = Environment.ExpandEnvironmentVariables(logFile);
+                    var directoryName = Path.GetDirectoryName(logFileExpanded);
+                    Directory.CreateDirectory(directoryName);
+
+                    loggingBuilder.AddFile(loggingSection);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Warning. Could not create logfile: Exception: {e}");
+            }
+        }
+
+        private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
+        {
+            services.AddSingleton<IMainViewModel, MainViewModel>();
         }
     }
 }

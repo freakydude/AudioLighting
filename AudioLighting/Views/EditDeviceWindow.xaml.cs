@@ -10,12 +10,12 @@ namespace AudioLighting.Views
     /// <summary>
     /// Interaktionslogik für NewDevice.xaml
     /// </summary>
-    public partial class EditDevice : Window
+    public partial class EditDeviceWindow : Window
     {
         private UdpDevice toEdit;
         private readonly MainWindow mainWindowInstance;
         private readonly string initialName;
-        public EditDevice(UdpDevice u, MainWindow x)
+        public EditDeviceWindow(UdpDevice u, MainWindow x)
         {
             InitializeComponent();
             toEdit = u;
@@ -24,7 +24,7 @@ namespace AudioLighting.Views
             mainWindowInstance = x;
         }
 
-        public EditDevice(UdpDevice u)
+        public EditDeviceWindow(UdpDevice u)
         {
             InitializeComponent();
             toEdit = u;
